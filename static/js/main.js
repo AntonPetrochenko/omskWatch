@@ -20,3 +20,5 @@ $('.set').click(function () {
 		})
 	}
 });
+
+var objectId;
