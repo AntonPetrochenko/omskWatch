@@ -48,7 +48,11 @@ async function asyncRequest(sql) {
 		conn = await pool.getConnection()
 		const rows = await conn.query(sql)
 		console.log('SQL request ' + sql)
-	
+	} catch (err) {
+		throw err;
+	} finally {
+		if (conn) return conn.end();
+	}
 }
 
 asyncFunction()
