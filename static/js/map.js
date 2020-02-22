@@ -12,6 +12,6 @@ function init(){
     $.getJSON('js/data.json')
         .done(function (geoJson) {
             objectManager.add(geoJson);// Добавляем описание объектов в формате JSON в менеджер объектов
-            map.geoObjects.add(objectManager);// Добавляем объекты на карту
+            myMap.geoObjects.add(objectManager);// Добавляем объекты на карту
         });
 }
