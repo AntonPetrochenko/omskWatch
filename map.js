@@ -4,5 +4,6 @@ function init(){
     var myMap = new ymaps.Map("map", { 	//id блока
         center: [54.989342, 73.368212],	//координаты
         zoom: 7							//уровень зума
+        controls:[]						//добавление элементов управления
     });
 }
