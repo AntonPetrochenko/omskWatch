@@ -73,19 +73,29 @@ input {
 }
 
 .reviews {
-	margin-left: 20px;
+	margin: 0px 0px 0px 20px;
+}
+
+.line-start {
+	width: inherit;
+	height: 1px;
+	background-color: #d3d4d8;
+	margin-bottom: 10px;
 }
 
 .comments {
-	margin: -0px 20px 0px 20px; 
+	margin: 10px 20px 0px 20px;
 }
 
 .commnet {
-	margin-top: 10px
+	margin-top: 8px
 }
 
-
-
+.line-end {
+	width: inherit;
+	height: 1px;
+	background-color: #d3d4d8;
+}
 
 
 #map {
