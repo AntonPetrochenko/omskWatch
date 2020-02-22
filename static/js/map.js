@@ -22,3 +22,14 @@ socket.onmessage = function (reply) {
     objectManager.add(JSON.parse(reply.data));// Добавляем описание объектов в формате JSON в менеджер объектов
     myMap.geoObjects.add(objectManager);// Добавляем объекты на карту
 }
+
+
+
+function onObjectEvent (e) {
+  objectId = e.get('objectId'),
+      objectGeometry = objectManager.objects.getById(objectId).geometry.type;
+      console.log(objectId);
+}
+
+// Назначаем обработчик событий на коллекцию объектов менеджера.   
+objectManager.objects.events.add(['click'], onObjectEvent);
