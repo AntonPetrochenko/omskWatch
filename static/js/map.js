@@ -6,4 +6,12 @@ function init(){
         zoom: 7,						//уровень зума
         controls:[]						//добавление элементов управления
     });
+    // Создание менеджера объектов
+    objectManager = new ymaps.ObjectManager();
+    // Загружаем GeoJSON файл с описанием объектов
+    $.getJSON('data.json')
+        .done(function (geoJson) {
+            objectManager.add(geoJson);// Добавляем описание объектов в формате JSON в менеджер объектов
+            map.geoObjects.add(objectManager);// Добавляем объекты на карту
+        });
 }
