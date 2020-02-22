@@ -62,8 +62,14 @@ input {
 	margin: 20px 0px 0px 20px; 
 }
 
+.line {
+	width: initial;
+	height: 1px;
+	background-color: #d3d4d8;
+	margin: 75px 20px 0px 20px;
+}
+
 .address {
-	margin-top: 75px;
 	width: inherit;
 	height: 70px;
 } .street {
