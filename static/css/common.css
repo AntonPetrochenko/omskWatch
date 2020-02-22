@@ -34,10 +34,37 @@ input {
 	display: flex;
   	position: absolute;
   	background: #FFFFFF;
-	box-shadow: 2px 2px 8px rgba(34, 40, 49, 0.25);
+	box-shadow: 4px 2px 8px rgba(34, 40, 49, 0.25);
 	width: 318px;
 	height: 100vh;
 	z-index: 1;
+	transition: all 0.5s ease-out;
+}
+
+.exit {
+	cursor: pointer;
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 318px;
+	padding: 12px;
+	border-radius: 0px 6px 6px 0px;
+	background: #FFFFFF;
+	box-shadow: 2px 1px 8px rgba(34, 40, 49, 0.25);
+	z-index: 1;
+	transition: all 0.5s ease-out;
+}
+
+.set {
+	cursor: pointer;
+	position: absolute;
+	margin-top: 75px;
+	margin-left: 318px;
+	padding: 12px;
+	border-radius: 0px 6px 6px 0px;
+	background: #FFFFFF;
+	box-shadow: 2px 1px 8px rgba(34, 40, 49, 0.25);
+	z-index: 1;
+	transition: all 0.5s ease-out;
 }
 
 .head {

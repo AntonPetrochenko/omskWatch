@@ -41,18 +41,60 @@ async function asyncFunction() {
   }
 }
 
-async function asyncRequest(sql) {
+async function doRequest(sql) {
 	
 	let conn;
+	var rows;
 	try {
 		conn = await pool.getConnection()
-		const rows = await conn.query(sql)
-		console.log('SQL request ' + sql)
+		rows = await conn.query(sql)
 	} catch (err) {
 		throw err;
 	} finally {
 		if (conn) return conn.end();
 	}
+	return await rows
 }
 
-asyncFunction()
+const WebSocket = require('ws');
+ 
+const wss = new WebSocket.Server({ port: 12345 });
+
+wss.on('connection', function connection(ws) {
+	
+	ws.on('message', async function incoming(message) {
+		message = JSON.parse(message)
+		if (message[0] == "PointRequest") {
+				
+		pool.getConnection().then(conn => {conn.query("SELECT * FROM Точка").then(
+			rows => {
+				
+				reply = {
+					"type": "FeatureCollection",
+					"features": []
+				}
+				for (i = 0; i < rows.length - 1; i++) {
+					reply.features.push({
+					"type": "Feature",
+					"id": rows[i]["ID_тчк"],
+					"geometry": {
+						"type": "Point",
+						"coordinates": [rows[i].x, rows[i].y] 
+					}
+					})
+				}
+				ws.send(JSON.stringify(reply))
+				
+			}
+		)})
+				
+				
+				
+				
+				
+		}
+	});
+	
+	
+
+});
