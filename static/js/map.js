@@ -1,15 +1,17 @@
 ymaps.ready(init);//вызов init когда страница готова
 var myMap;
-var objectManager
+var objectManager;
+var geocode = "https://geocode-maps.yandex.ru/1.x/?geocode=";
+var format = "&format=json";
+var apikey = "&apikey=7a9561e3-473f-4a93-8562-640b5d58eb2d"
 function init(){
     // Создание карты.
         myMap = new ymaps.Map("map", { 	//id блока
         center: [54.989342, 73.368212],	//координаты
-        zoom: 7,						//уровень зума
+        zoom: 12,						//уровень зума
         controls:[]						//добавление элементов управления
     });
-
-        myMap.events.add(['click'], addObject);
+    myMap.events.add(['click'], addObject);
 }
 //Создание WebSocket
 let socket = new WebSocket("ws://192.168.43.195:12345");
@@ -41,6 +43,11 @@ function onObjectEvent (e) {
 };
 
 function addObject(e){
-    objectCoords = e.get('coords');
-    console.log();
+    var street;
+    var coords = e.get("coords");
+    var x = coords[0].toPrecision(8);
+    var y = coords[1].toPrecision(8);
+    $.getJSON(geocode + y + "," + x + format + apikey, function(json){
+        street = json.response.GeoObjectCollection.featureMember[0].GeoObject.name;
+    })
 };
