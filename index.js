@@ -66,33 +66,72 @@ wss.on('connection', function connection(ws) {
 		message = JSON.parse(message)
 		if (message[0] == "PointRequest") {
 				
-		pool.getConnection().then(conn => {conn.query("SELECT * FROM Точка").then(
-			rows => {
-				
-				reply = {
-					"type": "FeatureCollection",
-					"features": []
-				}
-				for (i = 0; i < rows.length - 1; i++) {
-					reply.features.push({
-					"type": "Feature",
-					"id": rows[i]["ID_тчк"],
-					"geometry": {
-						"type": "Point",
-						"coordinates": [rows[i].x, rows[i].y] 
+			pool.query("SELECT * FROM Точка").then(
+				rows => {
+					reply = {
+						"type": "FeatureCollection",
+						"features": []
 					}
-					})
+					for (i = 0; i < rows.length; i++) {
+						reply.features.push({
+						"type": "Feature",
+						"id": rows[i]["ID_тчк"],
+						"geometry": {
+							"type": "Point",
+							"coordinates": [rows[i].x, rows[i].y] 
+						}
+						})
+					}
+					ws.send(JSON.stringify(reply))
+					
 				}
-				ws.send(JSON.stringify(reply))
-				
-			}
-		)})
-				
-				
-				
-				
-				
+			)
 		}
+		
+		message.comments[0].category
+		if (message[0] == "InfoRequest") {
+				
+			pool.query("SELECT * FROM ИНФО WHERE `ID_тчк` = " + message[1]).then(
+				rows => {
+					reply = {
+						"type": "SidebarInfo",
+						"address": rows[0]["Адрес"],
+						"comments": []
+					}
+					for (i = 0; i < rows.length; i++) {
+						reply.comments.push({
+						"category": rows[i]["Категория"],
+						"name": rows[i]["ФИО"],
+						"content": rows[i]["Содержание"]
+						})
+					}
+					ws.send(JSON.stringify(reply))
+					
+				}
+			)
+		}
+		
+		// ID_тчк
+		// ID_Категории
+		// Содержание
+		// ID_автора = 1
+		
+		
+		/*  [
+				"PostComment",	
+				[
+					ID_Точки,
+					ID_Категории,
+					Содержание,
+					1 (id автора, пока всегда такой)
+				]
+			]
+		*/
+		
+		if (message[0] == "SendComment") {
+			pool.query(`CALL ( ${message[1][0]}, ${message[1][1]}, ${message{1}{2}}, ${message{1}{3}})`)
+		}
+		
 	});
 	
 	
