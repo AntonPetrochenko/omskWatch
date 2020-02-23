@@ -8,6 +8,8 @@ function init(){
         zoom: 7,						//уровень зума
         controls:[]						//добавление элементов управления
     });
+
+        myMap.events.add(['click'], addObject);
 }
 //Создание WebSocket
 let socket = new WebSocket("ws://192.168.43.195:12345");
@@ -36,5 +38,9 @@ socket.onmessage = function (reply) {
 function onObjectEvent (e) {
     objectId = e.get('objectId');
     onClickEvent(objectId);
-} 
-    
+};
+
+function addObject(e){
+    objectCoords = e.get('coords');
+    console.log();
+};
