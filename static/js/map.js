@@ -60,7 +60,7 @@ function addObject(e){
 
     // Размещение геообъекта на карте.
     myMap.geoObjects.add(myGeoObject);
-    message = JSON.stringifly([
+    message = JSON.stringify([
             "SendPoint",
             [
                 x,
