@@ -31,6 +31,8 @@ input {
 }
 
 .side-bar {
+	overflow: auto;
+	overflow-x:hidden;
 	display: flex;
   	position: absolute;
   	background: #FFFFFF;
@@ -121,17 +123,19 @@ input {
 	width: inherit;
 	height: 1px;
 	background-color: #d3d4d8;
-	margin-bottom: 10px;
 }
 
 .comments {
-	overflow: auto;
 	position: absolute;
 	margin: 238px 20px 0px 20px;
 }
 
+#name {
+	margin-top: 10px;
+}
+
 #commnet {
-	margin-top: 8px
+	margin-top:-8px;
 }
 
 .line-end {
@@ -140,7 +144,16 @@ input {
 	background-color: #d3d4d8;
 }
 
+.sendReviews {
+	z-index: 1;
+	position: absolute;
+	margin: 0px 0px 0px 20px; 
+}
 
+.send {
+	z-index: 1;
+	position: absolute;
+}
 
 
 
