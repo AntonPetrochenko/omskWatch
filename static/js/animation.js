@@ -33,9 +33,3 @@ window.onload = function () {
         $('.exit').css('opacity', '1');
         $('.set').css('opacity', '1');
 }
-
-function onClickEvent() {
-
-};
-
-var objectId;
