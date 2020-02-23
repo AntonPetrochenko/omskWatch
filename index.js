@@ -88,7 +88,7 @@ wss.on('connection', function connection(ws) {
 			)
 		}
 		
-		message.comments[0].category
+		//message.comments[0].category
 		if (message[0] == "InfoRequest") {
 				
 			pool.query("SELECT * FROM ИНФО WHERE `ID_тчк` = " + message[1]).then(
@@ -129,7 +129,22 @@ wss.on('connection', function connection(ws) {
 		*/
 		
 		if (message[0] == "SendComment") {
-			pool.query(`CALL ( ${message[1][0]}, ${message[1][1]}, ${message{1}{2}}, ${message{1}{3}})`)
+			pool.query(`CALL InsertComment( ${message[1][0]}, ${message[1][1]}, ${message[1][2]}, ${message[1][3]})`)
+		}
+		
+		/*
+			[
+				"SendPoint",
+				[
+					x,
+					y,
+					address
+				]
+			]
+		
+		*/
+		if (message[0] == "SendPoint") {
+			pool.query(`CALL InsertPoint( ${message[1][0]}, ${message[1][1]}, ${message[1][2]}, ${message[1][3]})`)
 		}
 		
 	});
