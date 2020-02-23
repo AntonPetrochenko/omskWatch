@@ -79,6 +79,13 @@ input {
 	background-color: #222831;
 }
 
+.logo {
+	color: white;
+	font-size: 18px;
+	margin-top: 30px;
+	margin-left: 20px; 
+}
+
 #search {
 	width: ;
 	margin: 30px 0px 0px 20px;
@@ -116,7 +123,8 @@ input {
 
 .reviews {
 	position: absolute;
-	margin: 214px 0px 0px 20px;
+	margin: 218px 0px 0px 20px;
+	opacity: 0;
 }
 
 .line-start {
@@ -128,6 +136,7 @@ input {
 .comments {
 	position: absolute;
 	margin: 238px 20px 0px 20px;
+	opacity: 1;
 }
 
 #name {
@@ -147,12 +156,20 @@ input {
 .sendReviews {
 	z-index: 1;
 	position: absolute;
-	margin: 0px 0px 0px 20px; 
+	margin: 198px 0px 0px 20px;
+	opacity: 0;
 }
 
 .send {
 	z-index: 1;
 	position: absolute;
+} input {
+	margin: 218px 0px 0px 20px;
+	border: 0px; 
+	border-bottom: 1px solid #222831!important;
+} textarea {
+	width: 160px;
+  	height: 128px;
 }
 
 
@@ -297,3 +314,11 @@ body {
 /* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
   /**/ }
+
+ .categ {
+	font-size: 0.8em;
+ }
+
+ .commentname {
+ 	color: blue;
+ }
