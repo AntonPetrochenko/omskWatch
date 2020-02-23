@@ -27,13 +27,11 @@ $('.set').click(function () {
 
 window.onload = function () {
     document.body.classList.add('loaded_hiding');
-    window.setTimeout(function () {
-    	document.body.classList.add('loaded');
+    document.body.classList.add('loaded');
         document.body.classList.remove('loaded_hiding');
         $('.side-bar').css('opacity', '1');
         $('.exit').css('opacity', '1');
         $('.set').css('opacity', '1');
-    }, 200);
 }
 
 var objectId;
