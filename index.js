@@ -129,7 +129,7 @@ wss.on('connection', function connection(ws) {
 		*/
 		
 		if (message[0] == "SendComment") {
-			pool.query(`CALL InsertComment( ${message[1][0]}, ${message[1][1]}, ${message[1][2]}, ${message[1][3]})`)
+			pool.query(`CALL InsertComment( ${message[1][0]}, ${message[1][1]}, "${message[1][2]}", ${message[1][3]})`)
 		}
 		
 		/*
@@ -144,9 +144,9 @@ wss.on('connection', function connection(ws) {
 		
 		*/
 		if (message[0] == "SendPoint") {
-			pool.query(`CALL InsertPoint( ${message[1][0]}, ${message[1][1]}, ${message[1][2]}, ${message[1][3]})`)
+			pool.query(`CALL InsertPoint( ${message[1][0]}, ${message[1][1]}, "${message[1][2]}")`)
 		}
-		
+		console.log(message[0])
 	});
 	
 	
