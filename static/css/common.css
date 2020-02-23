@@ -110,7 +110,7 @@ input {
 	margin-top: 138px;
 } #street {
 	margin: 10px 0px 0px 20px;
-} #region {
+} #category {
 	margin: 10px 0px 0px 20px;
 }
 
@@ -154,7 +154,6 @@ input {
 	z-index: 1;
 	position: absolute;
 }
-
 
 
 

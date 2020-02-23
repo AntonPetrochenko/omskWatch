@@ -17,23 +17,26 @@ socket.onopen = function() {
 };
 //Получение ответа от сервера
 socket.onmessage = function (reply) {
+    console.log(reply.data)
     if (JSON.parse(reply.data).type == "FeatureCollection") {
-        console.log(reply.data);
+        //console.log(reply.data);
         objectManager = new ymaps.ObjectManager();
         objectManager.add(JSON.parse(reply.data));// Добавляем описание объектов в формате JSON в менеджер объектов
         setTimeout( () => {myMap.geoObjects.add(objectManager);}, 5000 );// Добавляем объекты на карту
         // Назначаем обработчик событий на коллекцию объектов менеджера.
-        setTimeout( () => {objectManager.objects.events.add(['click'], onObjectEvent);}, 5100 );
+        objectManager.objects.events.add(['click'], onObjectEvent);
     }
     if (JSON.parse(reply.data).type == "SidebarInfo") {
       //SomethingHandler(reply.data)
       console.log(reply.data);
+      printMessage(reply.data)
     }
 }
 
 function onObjectEvent (e) {
   objectId = e.get('objectId'),
       objectGeometry = objectManager.objects.getById(objectId).geometry.type;
+      onClickEvent(objectId);
       console.log(objectId);
 } 
     
