@@ -34,9 +34,7 @@ socket.onmessage = function (reply) {
 }
 
 function onObjectEvent (e) {
-  objectId = e.get('objectId'),
-      objectGeometry = objectManager.objects.getById(objectId).geometry.type;
-      onClickEvent(objectId);
-      console.log(objectId);
+    objectId = e.get('objectId');
+    onClickEvent(objectId);
 } 
     
