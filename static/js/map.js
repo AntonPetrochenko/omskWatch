@@ -50,4 +50,29 @@ function addObject(e){
     $.getJSON(geocode + y + "," + x + format + apikey, function(json){
         street = json.response.GeoObjectCollection.featureMember[0].GeoObject.name;
     })
+    //Создание геообъекта
+    var myGeoObject = new ymaps.GeoObject({
+        geometry: {
+            type: "Point",
+            coordinates: coords
+        }
+    });
+
+    // Размещение геообъекта на карте.
+    myMap.geoObjects.add(myGeoObject);
+    message = JSON.stringifly([
+            "SendPoint",
+            [
+                x,
+                y,
+                street
+            ]
+        ])
+    socket.send(message) 
 };
+
+function searchByAddress(street){
+    $.getJSON(geocode + "Омск" + street + format + apikey, function(json){
+        console.log(json);
+    })
+}
