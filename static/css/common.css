@@ -71,6 +71,7 @@ input {
 }
 
 .head {
+	position: absolute;
 	width: inherit;
 	height: 128px;
 	background-color: #222831;
@@ -93,17 +94,18 @@ input {
 }
 
 .line {
-	width: initial;
+	width: inherit;
 	height: 1px;
 	background-color: #d3d4d8;
-	margin-top: 75px; 
+	margin-top: 140px;
 	/*margin: 80px 20px 0px 20px;*/
 }
 
 .address {
+	position: absolute;
 	width: inherit;
 	height: 70px;
-	/*margin-top: 75px;*/
+	margin-top: 138px;
 } #street {
 	margin: 10px 0px 0px 20px;
 } #region {
@@ -111,7 +113,8 @@ input {
 }
 
 .reviews {
-	margin: 0px 0px 0px 20px;
+	position: absolute;
+	margin: 214px 0px 0px 20px;
 }
 
 .line-start {
@@ -122,7 +125,9 @@ input {
 }
 
 .comments {
-	margin: 10px 20px 0px 20px;
+	overflow: auto;
+	position: absolute;
+	margin: 238px 20px 0px 20px;
 }
 
 #commnet {
